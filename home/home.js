@@ -2,6 +2,7 @@ document.getElementById('logout-btn').addEventListener('click', () => {
   window.location.href = '../index.html';
 });
 
+// Success message
 function successMessageFunc(bank = '', work = '', money = '') {
   let successMessage = document.getElementById('success-message');
   successMessage.removeAttribute('style', true);
@@ -20,6 +21,7 @@ function successMessageFunc(bank = '', work = '', money = '') {
   errorMessageClose.style.display = 'none';
 }
 
+// Error message
 function errorMessageFunc(errorMsg) {
   let errorMessage = document.getElementById('error-message');
   errorMessage.removeAttribute('style', true);
@@ -38,6 +40,42 @@ function errorMessageFunc(errorMsg) {
   successMessageClose.style.display = 'none';
 }
 
+function transactionList(cardImg, cardText, dates) {
+  let transactionListContainer = document.getElementById(
+    'transaction-list-container'
+  );
+
+  let transactionBox = document.createElement('div');
+  transactionBox.classList.add(
+    'flex',
+    'justify-between',
+    'items-center',
+    'py-3',
+    'px-4',
+    'bg-white',
+    'border',
+    'border-[#0808081a]',
+    'rounded-xl'
+  );
+  transactionBox.innerHTML = `
+      <div class="flex gap-2">
+        <div class="p-3 bg-[#0808080d] w-[45px] h-[45px] rounded-full">
+            <img class="w-full h-full" src="${cardImg}" alt="">
+        </div>
+        <div>
+            <h3 class="text-[#080808b3] font-semibold text-base">${cardText}</h3>
+            <p class="text-[#080808b3] font-normal text-[12px]">${dates}</p>
+        </div>
+      </div>
+      <div class="w-6 h-6 cursor-pointer">
+        <i class="fa-solid fa-ellipsis-vertical text-[#080808b3] font-semibold text-base"></i>
+      </div>
+  `;
+
+  transactionListContainer.appendChild(transactionBox);
+}
+
+// get Cards
 let addMoneyCard = document.getElementById('add-money-card');
 let addMoneyText = document.getElementById('add-money-text');
 
@@ -56,6 +94,7 @@ let paybillText = document.getElementById('paybill-text');
 let transactionCard = document.getElementById('transaction-card');
 let transactionText = document.getElementById('transaction-card');
 
+// Card style Toggle
 function makeStyles(card, text) {
   addMoneyCard.classList.remove('active-card');
   addMoneyText.classList.remove('active-card-text');
@@ -79,6 +118,7 @@ function makeStyles(card, text) {
   text.classList.add('active-card-text');
 }
 
+// Cards click
 addMoneyCard.addEventListener('click', () => {
   makeStyles(addMoneyCard, addMoneyText);
 });
@@ -111,6 +151,7 @@ let bonusForm = document.getElementById('bonus-form');
 let paybillForm = document.getElementById('pay-bill-form');
 let transactionForm = document.getElementById('transaction-form');
 
+// Toggle Form hide unhide
 function hiddenForm(form) {
   addMoneyForm.classList.add('hidden-form');
   cashoutForm.classList.add('hidden-form');
@@ -122,6 +163,7 @@ function hiddenForm(form) {
   form.classList.remove('hidden-form');
 }
 
+// Click to Hide unhide form
 addMoneyCard.addEventListener('click', () => {
   hiddenForm(addMoneyForm);
 });
@@ -181,6 +223,15 @@ document.getElementById('addMoney-btn').addEventListener('click', e => {
 
   let addBankSelect = document.getElementById('add-bank-select');
   successMessageFunc(addBankSelect.value, 'Add Money', addMoneyValue);
+
+  // Transations
+  let addMoneyImgId = document.getElementById('add-money-img');
+  let addMoneyImg = addMoneyImgId.getAttribute('src');
+  let addMoneyText = document.getElementById('add-money-text');
+
+  let DatesFunc = new Date();
+  let updateDate = DatesFunc.toLocaleString();
+  transactionList(addMoneyImg, addMoneyText.innerText, updateDate);
 });
 
 // Money Cashout
@@ -217,6 +268,15 @@ document.getElementById('cashout-btn').addEventListener('click', e => {
   mainAmmount.innerText = calcAmmount;
 
   successMessageFunc('Cashout', cashoutMoneyValue);
+
+  // Transations
+  let cashoutImgId = document.getElementById('cashout-img');
+  let cashoutImg = cashoutImgId.getAttribute('src');
+  let cashoutText = document.getElementById('cashout-text');
+
+  let DatesFunc = new Date();
+  let updateDate = DatesFunc.toLocaleString();
+  transactionList(cashoutImg, cashoutText.innerText, updateDate);
 });
 
 // Transfer Money
@@ -262,6 +322,15 @@ document.getElementById('transfer-btn').addEventListener('click', e => {
   mainAmmount.innerText = calcAmmount;
 
   successMessageFunc('Transfer Money', transferMoneyValue);
+
+  // Transations
+  let transferImgId = document.getElementById('transfer-img');
+  let transferImg = transferImgId.getAttribute('src');
+  let transferText = document.getElementById('transfer-text');
+
+  let DatesFunc = new Date();
+  let updateDate = DatesFunc.toLocaleString();
+  transactionList(transferImg, transferText.innerText, updateDate);
 });
 
 // Pay Money
@@ -310,6 +379,15 @@ document.getElementById('paybill-btn').addEventListener('click', e => {
   let accountName = paybillAccount.value + ' ' + 'Account';
 
   successMessageFunc(accountName, 'PayBill', paybillMoneyValue);
+
+  // Transations
+  let paybillImgId = document.getElementById('paybill-img');
+  let paybillImg = paybillImgId.getAttribute('src');
+  let paybillText = document.getElementById('paybill-text');
+
+  let DatesFunc = new Date();
+  let updateDate = DatesFunc.toLocaleString();
+  transactionList(paybillImg, paybillText.innerText, updateDate);
 });
 
 // bonus
