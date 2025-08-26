@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+@import 'tailwindcss';
+
+.outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+.active-card {
+  border: 1px solid #0874f2;
+  background: rgba(8, 116, 242, 0.05);
+}
+
+.active-card-text {
+  color: rgba(8, 116, 242, 1);
+  font-weight: 600;
+}
+
+.hidden-form {
+  display: none;
+}

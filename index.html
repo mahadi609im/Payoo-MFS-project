@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Payoo-MFS</title>
+   <!-- daisy ui -->
+   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+   <!-- tailwind -->
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   <!-- css link -->
+   <link rel="stylesheet" href="tailwind.init.css">
+</head>
+
+<body class="bg-[#F4F5F7] w-full h-screen outfit">
+   <!-- Error message -->
+   <div id="error-message" class="alert alert-error max-w-lg mx-auto flex justify-between" style="display: none;">
+      <h3 id="error-message-text" class="text-white font-semibold text-base ">Hello world</h3>
+      <button id="error-message-close" class="btn">Close</button>
+   </div>
+   <div class="flex justify-center items-center">
+      <div class="container mx-auto max-w-md">
+         <form class="p-8 bg-white space-y-4 rounded-3xl">
+            <h2 class="text-2xl text-center font-semibold mb-6 text-[#080808b3]">Login Form</h2>
+            <div>
+               <label class="text-base font-medium text-[##080808]" for="phone">Mobile Number | im.com</label>
+               <input id="phone-input" type="text" placeholder="Enter your number"
+                  class="input py-4 pl-5 w-full bg-[#F4F5F7] outline-none border-0 rounded-4xl mt-3 text-[#080808b3] text-base font-medium" />
+            </div>
+            <div>
+               <label class="text-base font-medium text-[#080808]" for="phone">4 Digit Pin | 609012</label>
+               <input id="pass-input" type="password" placeholder="Enter 4 Digit Pin"
+                  class="input py-4 pl-5 w-full bg-[#F4F5F7] outline-none border-0 rounded-4xl mt-3 text-[#080808b3] text-base font-medium" />
+            </div>
+
+            <button id="login-btn"
+               class="py-3.5 px-5 text-center w-full bg-[#0874F2] text-xl font-semibold text-white rounded-4xl cursor-pointer mt-4">Login</button>
+         </form>
+      </div>
+   </div>
+
+   <script src="main.js"></script>
+</body>
+
+</html>
