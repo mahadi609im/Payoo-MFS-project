@@ -279,7 +279,7 @@ document.getElementById('paybill-btn').addEventListener('click', e => {
       errorMessageFunc('Please Enter 11 digit number');
       return;
     }
-    errorMessageFunc('Please Enter Correct Pin Number');
+    errorMessageFunc('Please Enter valid number or Pin code');
     return;
   }
 
