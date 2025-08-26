@@ -47,6 +47,7 @@ function transactionList(cardImg, cardText, dates) {
 
   let transactionBox = document.createElement('div');
   transactionBox.classList.add(
+    'transaction-box',
     'flex',
     'justify-between',
     'items-center',
@@ -186,6 +187,18 @@ paybillCard.addEventListener('click', () => {
 
 transactionCard.addEventListener('click', () => {
   hiddenForm(transactionForm);
+
+  let transactionBox = document.getElementsByClassName('transaction-box');
+  console.log();
+
+  if (transactionBox.length > 0) {
+    let transactionHistory = document.getElementById('transaction-history');
+    transactionHistory.removeAttribute('style', true);
+    let transactionNoHistory = document.getElementById(
+      'transaction-no-history'
+    );
+    transactionNoHistory.style.display = 'none';
+  }
 });
 
 // Money add
